@@ -1,0 +1,18 @@
+import React from "react";
+import styled from "styled-components/native";
+
+const Vote = styled.Text`
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  font-size: 10px;
+`;
+interface VotesProps {
+  voteAverager: number;
+}
+const Votes: React.FC<VotesProps> = ({ voteAverage }) => {
+  return (
+    <Vote> {voteAverage > 0 ? `⭐️ ${voteAverage}/10` : `Coming soon`}</Vote>
+  );
+};
+
+export default Votes;

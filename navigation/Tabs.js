@@ -7,21 +7,19 @@ import Home from "../screens/Home";
 import SocialChart from "../screens/SocialChart";
 import Search from "../screens/Search";
 import Profile from "../screens/Profile";
-import {
-  COLOR_BLACK_PEARL,
-  COLOR_CHROME_YELLOW,
-  COLOR_GOOD_NIGHT,
-  COLOR_HINT_OF_ELUSIVE_BLUE,
-  COLOR_LONDON_SQUARE,
-} from "../color-swedish-palette";
 
 import { Ionicons } from "@expo/vector-icons";
-import Stack from "./Stack";
 
 const Tab = createBottomTabNavigator();
+
 const Tabs = () => {
+  const isDark = useColorScheme() === "dark";
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      sceneContainerStyle={{
+        backgroundColor: isDark ? "black" : "white",
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
