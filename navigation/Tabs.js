@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { useColorScheme } from "react-native";
 
-import Home from "../screens/Home";
-import SocialChart from "../screens/SocialChart";
+import Movie from "../screens/Movie";
+import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import Profile from "../screens/Profile";
 
@@ -19,22 +19,25 @@ const Tabs = () => {
       sceneContainerStyle={{
         backgroundColor: isDark ? "black" : "white",
       }}
+      screenOptions={{ unmountOnBlur: true }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Movie"
+        component={Movie}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return <Ionicons name="md-home" color={color} size={size} />;
+            return (
+              <Ionicons name="md-film-outline" color={color} size={size} />
+            );
           },
         }}
       />
       <Tab.Screen
-        name="SocialChart"
-        component={SocialChart}
+        name="TV"
+        component={Tv}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return <Ionicons name="md-bar-chart" color={color} size={size} />;
+            return <Ionicons name="md-tv-outline" color={color} size={size} />;
           },
         }}
       />
@@ -43,16 +46,9 @@ const Tabs = () => {
         component={Search}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return <Ionicons name="md-search" color={color} size={size} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => {
-            return <Ionicons name="md-person" color={color} size={size} />;
+            return (
+              <Ionicons name="md-search-outline" color={color} size={size} />
+            );
           },
         }}
       />

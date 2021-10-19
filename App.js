@@ -11,11 +11,13 @@ import {
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { Asset, useAssets } from "expo-asset";
-import Tabs from "./navigation/Tabs";
-import Stack from "./navigation/Stack";
 import Root from "./navigation/Root";
 import { darkTheme, lightTheme } from "./styled";
 import { ThemeProvider } from "styled-components/native";
+
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const [assets] = useAssets([require("./assets/my-face.jpeg")]);
@@ -31,12 +33,14 @@ export default function App() {
     );
   }
   return (
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
-        {/* <Tabs></Tabs> */}
-        {/* <Stack /> */}
-        <Root />
-      </NavigationContainer>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
+          {/* <Tabs></Tabs> */}
+          {/* <Stack /> */}
+          <Root />
+        </NavigationContainer>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

@@ -7,7 +7,7 @@ const Vote = styled.Text`
   font-size: 10px;
 `;
 interface VotesProps {
-  voteAverager: number;
+  voteAverage: number;
 }
 const Votes: React.FC<VotesProps> = ({ voteAverage }) => {
   return (
